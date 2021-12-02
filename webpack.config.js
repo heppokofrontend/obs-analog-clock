@@ -3,29 +3,38 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV == "production";
 
 const stylesHandler = MiniCssExtractPlugin.loader;
 
 const config = {
-  entry: "./src/index.ts",
+  entry: "./src/scripts/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
   },
   devServer: {
     open: true,
     host: "localhost",
+    liveReload: true,
+    static: path.join(__dirname, 'static'),
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "index.html",
+      template: "./src/index.html",
     }),
 
     new MiniCssExtractPlugin(),
 
-    // Add your plugins here
-    // Learn more about plugins from https://webpack.js.org/configuration/plugins/
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: './static/clock/**/*',
+          to: './clock/[name][ext]',
+        }
+      ],
+    }),
   ],
   module: {
     rules: [
