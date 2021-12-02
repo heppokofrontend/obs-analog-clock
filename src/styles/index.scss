@@ -37,7 +37,7 @@ body:not(:root) {
   }
 
   main {
-    min-width: 400px;
+    min-width: 300px;
     margin: 0 auto;
     text-align: center;
   }
@@ -88,11 +88,16 @@ body:not(:root) {
   position: relative;
   display: inline-block;
   margin: 0 auto 40px;
-  pointer-events: none;
+  overflow: hidden;
 
-  .clock__item:not(#base) {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .clock__item {
+    max-width: 100%;
+    height: auto;
+
+    &:not(#base) {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
 }
