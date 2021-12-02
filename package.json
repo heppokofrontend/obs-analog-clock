@@ -1,7 +1,11 @@
 {
-  "name": "my-webpack-project",
-  "description": "My webpack project",
+  "name": "obs-analog-clock",
+  "description": "Put down an analog clock on OBS",
   "version": "1.0.0",
+  "author": "heppokofrontend",
+  "bugs": {
+    "url": "https://github.com/heppokofrontend/obs-analog-clock/issues"
+  },
   "devDependencies": {
     "@webpack-cli/generators": "^2.4.1",
     "autoprefixer": "^10.4.0",
@@ -20,6 +24,14 @@
     "webpack": "^5.64.4",
     "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^4.6.0"
+  },
+  "homepage": "https://github.com/heppokofrontend/obs-analog-clock#readme",
+  "keywords": [],
+  "license": "UNLICENSED",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heppokofrontend/obs-analog-clock.git"
   },
   "scripts": {
     "build": "webpack --mode=production --node-env=production",
