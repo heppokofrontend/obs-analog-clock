@@ -14,7 +14,9 @@ const minAdjustRate = minSecRate / 60;
 const hourAdjustRate = hourRate / 60;
 const render = () => {
   const {$_GET} = status;
-  const date = new Date();
+  const diff = Number($_GET.diff);
+  const timeDiff = Number(diff * 1000 * 60 * 60) || 0;
+  const date = new Date(Date.now() + timeDiff);
   const sec = date.getSeconds();
   const min = date.getMinutes();
   const hr = date.getHours();
@@ -29,7 +31,11 @@ const render = () => {
     min * hourAdjustRate :
     0;
 
-  time.textContent = date.toString();
+  time.textContent = `${String(hr).padStart(2, '0')}:${String(min).padStart(2, '0')}:${String(sec).padStart(2, '0')} JST ${
+    diff < 0 ? `${String(diff).padStart(2, '0')}00` :
+    0 < diff ? `+${String(diff).padStart(2, '0')}00` :
+    ''
+  }`;
   clock.sec.style.transform = `rotate(${sec * minSecRate + secTransition}deg)`;
   clock.min.style.transform = `rotate(${min * minSecRate + minTransition}deg)`;
   clock.hr.style.transform = `rotate(${hr * hourRate + hrTransition}deg)`;
