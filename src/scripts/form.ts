@@ -11,6 +11,7 @@ const form = {
   transitionHr: document.querySelector<HTMLSelectElement>('#f-transition-hr')!,
   transitionMin: document.querySelector<HTMLSelectElement>('#f-transition-min')!,
   transitionSec: document.querySelector<HTMLSelectElement>('#f-transition-sec')!,
+  scale: document.querySelector<HTMLInputElement>('#f-scale')!,
   diff: document.querySelector<HTMLInputElement>('#f-diff')!,
   url: document.querySelector<HTMLInputElement>('#f-url')!,
   css: document.querySelector<HTMLTextAreaElement>('#f-css')!,
@@ -25,6 +26,7 @@ const render = () => {
   form.transitionHr.value = $_GET['transition-hr'] || 'on';
   form.transitionMin.value = $_GET['transition-min'] || 'on';
   form.transitionSec.value = $_GET['transition-sec'] || 'off';
+  form.scale.value = $_GET.scale || '100';
   form.diff.value = $_GET.diff || '9';
   style.textContent = `
     .p-clock__inner {
@@ -32,13 +34,15 @@ const render = () => {
         (
           $_GET['rotate-x'] ||
           $_GET['rotate-y'] ||
-          $_GET['rotate-z']
+          $_GET['rotate-z'] ||
+          $_GET.scale
         ) ? (
           `transform: ${
             [
               $_GET['rotate-x'] ? `rotateX(${$_GET['rotate-x']}deg)` : '',
               $_GET['rotate-y'] ? `rotateY(${$_GET['rotate-y']}deg)` : '',
               $_GET['rotate-z'] ? `rotateZ(${$_GET['rotate-z']}deg)` : '',
+              $_GET.scale ? `scale(${Number($_GET.scale) / 100})` : '',
             ].join(' ')
           }`
         ) : ''
