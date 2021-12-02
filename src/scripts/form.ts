@@ -6,6 +6,7 @@ const style = document.createElement('style');
 const form = {
   size: document.querySelector<HTMLInputElement>('#f-size')!,
   url: document.querySelector<HTMLInputElement>('#f-url')!,
+  css: document.querySelector<HTMLTextAreaElement>('#f-css')!,
   transitionSec: document.querySelector<HTMLSelectElement>('#f-transition-sec')!,
 };
 const render = () => {
@@ -40,6 +41,20 @@ const render = () => {
     .clock__item {
       width: ${form.size.value}px;
       height: ${form.size.value}px;
+    }
+  `;
+  form.css.value = `
+    html, body {
+      overflow: hidden;
+    }
+    body:not(:root) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+    }
+    h1, #time, .f-textfield {
+      display: none;
     }
   `;
 }
