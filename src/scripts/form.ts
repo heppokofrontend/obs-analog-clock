@@ -5,6 +5,9 @@ type FromControl = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
 const style = document.createElement('style');
 const form = {
   size: document.querySelector<HTMLInputElement>('#f-size')!,
+  rotateX: document.querySelector<HTMLInputElement>('#f-rotate-x')!,
+  rotateY: document.querySelector<HTMLInputElement>('#f-rotate-y')!,
+  rotateZ: document.querySelector<HTMLInputElement>('#f-rotate-z')!,
   transitionHr: document.querySelector<HTMLSelectElement>('#f-transition-hr')!,
   transitionMin: document.querySelector<HTMLSelectElement>('#f-transition-min')!,
   transitionSec: document.querySelector<HTMLSelectElement>('#f-transition-sec')!,
@@ -16,11 +19,31 @@ const render = () => {
   const {$_GET} = status;
 
   form.size.value = $_GET.size || '400';
+  form.rotateX.value = $_GET['rotate-x'] || '0';
+  form.rotateY.value = $_GET['rotate-y'] || '0';
+  form.rotateZ.value = $_GET['rotate-z'] || '0';
   form.transitionHr.value = $_GET['transition-hr'] || 'on';
   form.transitionMin.value = $_GET['transition-min'] || 'on';
   form.transitionSec.value = $_GET['transition-sec'] || 'off';
   form.diff.value = $_GET.diff || '9';
   style.textContent = `
+    #clock {
+      ${
+        (
+          $_GET['rotate-x'] ||
+          $_GET['rotate-y'] ||
+          $_GET['rotate-z']
+        ) ? (
+          `transform: ${
+            [
+              $_GET['rotate-x'] ? `rotateX(${$_GET['rotate-x']}deg)` : '',
+              $_GET['rotate-y'] ? `rotateY(${$_GET['rotate-y']}deg)` : '',
+              $_GET['rotate-z'] ? `rotateZ(${$_GET['rotate-z']}deg)` : '',
+            ].join(' ')
+          }`
+        ) : ''
+      }
+    }
     .clock__item {
       width: ${form.size.value}px;
       height: ${form.size.value}px;
