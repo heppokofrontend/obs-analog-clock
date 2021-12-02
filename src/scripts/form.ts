@@ -27,7 +27,7 @@ const render = () => {
   form.transitionSec.value = $_GET['transition-sec'] || 'off';
   form.diff.value = $_GET.diff || '9';
   style.textContent = `
-    #clock {
+    .p-clock__inner {
       ${
         (
           $_GET['rotate-x'] ||
