@@ -61,11 +61,17 @@ const render = () => {
       background: transparent !important;
     }
     .l-main__preview > *:not(#clock),
-    .l-main__form {
+    .l-main__form,
+    .l-footer {
       display: none !important;
     }
 
+    .l-main {
+      display: block !important;
+    }
+
     .l-main__preview {
+      position: static !important;
       padding: 0 !important;
     }
 
