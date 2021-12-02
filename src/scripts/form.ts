@@ -44,27 +44,33 @@ const render = () => {
         ) : ''
       }
     }
-    .clock__item {
+    .p-clock__item {
       width: ${form.size.value}px;
       height: ${form.size.value}px;
     }
   `;
   form.css.value = `
     html, body {
-      overflow: hidden;
+      overflow: hidden !important;
     }
     body:not(:root) {
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: transparent;
+      padding: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      background: transparent !important;
     }
-    main > *:not(#clock) {
-      display: none;
+    .l-main__preview > *:not(#clock),
+    .l-main__form {
+      display: none !important;
     }
+
+    .l-main__preview {
+      padding: 0 !important;
+    }
+
     #clock {
-      margin-bottom: 0;
+      margin-bottom: 0 !important;
     }
   `.replace(/^\s+|\n/gmu, '');
   form.url.value = location.href;
