@@ -19,7 +19,7 @@ const render = () => {
   form.transitionHr.value = $_GET['transition-hr'] || 'on';
   form.transitionMin.value = $_GET['transition-min'] || 'on';
   form.transitionSec.value = $_GET['transition-sec'] || 'off';
-  form.diff.value = $_GET.diff || '0';
+  form.diff.value = $_GET.diff || '9';
   style.textContent = `
     .clock__item {
       width: ${form.size.value}px;
@@ -49,7 +49,7 @@ const handler = function (this: FromControl) {
     const _val = Number(this.value);
 
     if (
-      _val &&
+      !isNaN(_val) &&
       'max' in this &&
       'min' in this
     ) {
@@ -70,10 +70,10 @@ const handler = function (this: FromControl) {
     return '';
   })();
 
-  if (value) {
-    searchParams.set(name, value);
-  } else {
+  if (value === '') {
     searchParams.delete(name);
+  } else {
+    searchParams.set(name, value);
   }
 
   history.replaceState('', '', `${origin}${pathname}?${searchParams.toString()}`);
