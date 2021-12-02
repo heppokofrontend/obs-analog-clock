@@ -31,13 +31,17 @@ const render = () => {
       overflow: hidden;
     }
     body:not(:root) {
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       background: transparent;
     }
-    h1, #time, .f-textfield {
+    main > *:not(#clock) {
       display: none;
+    }
+    #clock {
+      margin-bottom: 0;
     }
   `.replace(/^\s+|\n/gmu, '');
   form.url.value = location.href;
