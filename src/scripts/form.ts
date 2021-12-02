@@ -60,7 +60,7 @@ const render = () => {
     h1, #time, .f-textfield {
       display: none;
     }
-  `;
+  `.replace(/^\s+|\n/gmu, '');
 }
 const handler = function (this: FromControl) {
   const {searchParams, origin, pathname} = new URL(location.href);

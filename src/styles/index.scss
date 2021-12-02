@@ -68,6 +68,11 @@ body:not(:root) {
     box-sizing: border-box;
   }
 
+  textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
   + .f-textfield {
     margin-top: 20px;
     padding-top: 20px;
