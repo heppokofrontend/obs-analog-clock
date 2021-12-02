@@ -46,6 +46,10 @@ const handler = function (this: FromControl) {
   const {searchParams, origin, pathname} = new URL(location.href);
   const name = this.id.replace('f-', '');
   const value = (() => {
+    if (this.tagName.toLocaleLowerCase() === 'select') {
+      return this.value;
+    }
+
     const _val = Number(this.value);
 
     if (
