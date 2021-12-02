@@ -10,7 +10,7 @@
   all: unset;
 }
 
-input, select, textarea {
+input, select, textarea, a {
   all: revert;
 }
 
@@ -20,6 +20,10 @@ head, script, style {
 
 div, main, h1, p {
   display: block;
+}
+
+a {
+  color: inherit;
 }
 
 body:not(:root) {
@@ -100,4 +104,8 @@ body:not(:root) {
       left: 0;
     }
   }
+}
+
+.reset {
+  margin-top: 40px;
 }
