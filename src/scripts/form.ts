@@ -7,6 +7,8 @@ const form = {
   size: document.querySelector<HTMLInputElement>('#f-size')!,
   url: document.querySelector<HTMLInputElement>('#f-url')!,
   css: document.querySelector<HTMLTextAreaElement>('#f-css')!,
+  transitionHr: document.querySelector<HTMLSelectElement>('#f-transition-hr')!,
+  transitionMin: document.querySelector<HTMLSelectElement>('#f-transition-min')!,
   transitionSec: document.querySelector<HTMLSelectElement>('#f-transition-sec')!,
 };
 const render = () => {
@@ -35,6 +37,8 @@ const render = () => {
 
     return String(size);
   })();
+  form.transitionHr.value = $_GET['transition-hr'] || 'on';
+  form.transitionMin.value = $_GET['transition-min'] || 'on';
   form.transitionSec.value = $_GET['transition-sec'] || 'off';
   form.url.value = location.href;
   style.textContent = `
