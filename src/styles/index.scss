@@ -1,0 +1,87 @@
+*,
+::before,
+::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  all: unset;
+}
+
+input, select, textarea {
+  all: revert;
+}
+
+head, script, style {
+  display: none;
+}
+
+div, main, h1, p {
+  display: block;
+}
+
+body:not(:root) {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  color: #eee;
+  background: #3c3b42;
+
+  main {
+    min-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.f-textfield {
+  text-align: left;
+
+  label {
+    display: block;
+    padding: 4px 0;
+    font-weight: bold;
+    line-height: 1;
+  }
+
+  input,
+  select,
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 4px;
+    margin: .5em 0;
+    font-size: 18px;
+    color: #e1e0e1;
+    background: #1f1e1f;
+    border: 2px solid #1f1e1f;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  + .f-textfield {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #000;
+  }
+}
+
+#time {
+  margin: 0 0 40px;
+}
+
+#clock {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto 40px;
+  pointer-events: none;
+
+  .clock__item:not(#base) {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

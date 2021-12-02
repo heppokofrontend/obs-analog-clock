@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>Webpack App</title>
+    <meta name="description" content="Put down an analog clock on OBS">
+  </head>
+  <body>
+    <main>
+      <h1>Clock</h1>
+
+      <p id="time"></p>
+
+      <div id="clock" class="clock">
+        <img
+          alt=""
+          class="clock__item"
+          id="base"
+          src="./clock/base.png"
+        />
+        <img
+          alt=""
+          class="clock__item"
+          id="hr"
+          src="./clock/hr.png"
+        />
+        <img
+          alt=""
+          class="clock__item"
+          id="min"
+          src="./clock/min.png"
+        />
+        <img
+          alt=""
+          class="clock__item"
+          id="sec"
+          src="./clock/sec.png"
+        />
+      </div>
+
+      <div class="f-textfield">
+        <p><label for="f-size">サイズ</label></p>
+        <p><input type="number" id="f-size" min="100" max="1200" /></p>
+      </div>
+
+      <div class="f-textfield">
+        <p><label for="f-transition-sec">トランジション（秒）</label></p>
+        <p>
+          <select id="f-transition-sec">
+            <option value="off">OFF</option>
+            <option value="on">ON</option>
+          </select>
+        </p>
+      </div>
+
+      <div class="f-textfield">
+        <p><label for="f-url">OBS - URL</label></p>
+        <p><input id="f-url" class="js-copy" readonly /></p>
+      </div>
+
+      <div class="f-textfield">
+        <p><label for="f-css">OBS - カスタム CSS</label></p>
+        <p><textarea id="f-css" class="js-copy" readonly></textarea></p>
+      </div>
+    </main>
+  </body>
+</html>
