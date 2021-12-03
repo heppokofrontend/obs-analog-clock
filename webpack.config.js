@@ -18,7 +18,7 @@ const config = {
     open: true,
     host: "localhost",
     liveReload: true,
-    static: path.join(__dirname, 'static'),
+    static: [path.join(__dirname, 'static'), './index.html'],
   },
   plugins: [
     new HtmlWebpackPlugin({
