@@ -77,6 +77,7 @@ body:not(:root) {
 .l-footer {
   padding: 40px 0;
   width: 100%;
+  font-size: 14px;
   text-align: center;
   border-top: 1px solid #ccc;
 }
@@ -116,7 +117,6 @@ body:not(:root) {
  * Project
  * -------------------------------------------------------------------------- */
 .p-form-desc {
-  padding: 12px 16px;
   margin: 0 0 40px;
   max-width: 300px;
   width: 100%;
@@ -127,12 +127,17 @@ body:not(:root) {
   border-radius: 4px;
 
   &__title {
+    padding: 12px 16px;
     cursor: pointer;
     text-align: center;
 
     + p {
       margin-top: 10px;
     }
+  }
+
+  &__content {
+    padding: 4px 16px 16px;
   }
 
   ul {
@@ -234,7 +239,12 @@ body:not(:root) {
   }
 }
 
+#f-url,
 #f-css {
-  font-size: 12px;
+  font-size: 10px;
+  line-height: 2;
+}
+
+#f-css {
   word-break: break-all;
 }
