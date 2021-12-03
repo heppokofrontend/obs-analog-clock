@@ -1,3 +1,11 @@
+<%
+  const FILE_LIST = [
+    'base',
+    'hr',
+    'min',
+    'sec',
+  ];
+%>
 <!DOCTYPE html>
 <html lang="ja">
   <head>
@@ -101,30 +109,14 @@
 
         <div id="clock" class="p-clock" style="background-image: url(./clock/bg.png);">
           <div class="p-clock__inner">
-            <img
-              alt=""
-              class="p-clock__item"
-              id="base"
-              src="./clock/base.png"
-            />
-            <img
-              alt=""
-              class="p-clock__item"
-              id="hr"
-              src="./clock/hr.png"
-            />
-            <img
-              alt=""
-              class="p-clock__item"
-              id="min"
-              src="./clock/min.png"
-            />
-            <img
-              alt=""
-              class="p-clock__item"
-              id="sec"
-              src="./clock/sec.png"
-            />
+            <%- FILE_LIST.map(filename => `
+              <img
+                alt=""
+                class="p-clock__item"
+                id="${filename}"
+                src="./clock/${filename}.png"
+              />
+            `) %>
           </div>
         </div>
 
