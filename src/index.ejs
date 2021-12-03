@@ -5,6 +5,12 @@
     'min',
     'sec',
   ];
+  const NAME_LIST = [
+    '文字盤',
+    '短針',
+    '長針',
+    '秒針',
+  ];
 %>
 <!DOCTYPE html>
 <html lang="ja">
@@ -41,9 +47,48 @@
           </div>
         </details>
 
+        <div class="p-layer-control" role="group" aria-labelledby="l">
+          <p class="p-layer-control__title" id="l">Layer order</p>
+
+          <ol class="p-layer-control__list" id="layer-order">
+            <%- FILE_LIST.map((filename, i) => `
+              <li class="p-layer-control__listitem">
+                <span class="p-layer-control__thumbwrap">
+                  <img src="./clock/${filename}.png" alt="" class="p-layer-control__thumb">
+                </span>
+                <span class="p-layer-control__name">
+                  <span class="p-layer-control__layername">${NAME_LIST[i]}</span>
+                  <span class="p-layer-control__filename">./clock/${filename}.png</span>
+                </span>
+                <span class="p-layer-control__adjuster">
+                  <input
+                    type="range"
+                    class="p-layer-control__opacity"
+                    data-id="${filename}"
+                    min="0"
+                    max="100"
+                    step="1"
+                  >
+                </span>
+                <span class="p-layer-control__btnwrap">
+                  <button type="button" class="p-layer-control__btn">Up</button>
+                </span>
+                <span class="p-layer-control__btnwrap">
+                  <button type="button" class="p-layer-control__btn">Down</button>
+                </span>
+              </li>
+            `).reverse().join(''); %>
+          </ol>
+        </div>
+
         <div class="p-form-control">
           <p><label for="f-size">Width & Height</label></p>
           <p><input type="number" id="f-size" min="100" max="1200" /></p>
+        </div>
+
+        <div class="p-form-control">
+          <p><label for="f-scale">Scale（％）</label></p>
+          <p><input type="number" id="f-scale" min="0" max="100" /></p>
         </div>
 
         <div class="p-form-control">
@@ -59,11 +104,6 @@
         <div class="p-form-control">
           <p><label for="f-rotate-z">Rotate Z</label></p>
           <p><input type="number" id="f-rotate-z" min="-360" max="360" /></p>
-        </div>
-
-        <div class="p-form-control">
-          <p><label for="f-scale">Scale（％）</label></p>
-          <p><input type="number" id="f-scale" min="0" max="100" /></p>
         </div>
 
         <div class="p-form-control">
@@ -116,7 +156,7 @@
                 id="${filename}"
                 src="./clock/${filename}.png"
               />
-            `) %>
+            `).join(''); %>
           </div>
         </div>
 
