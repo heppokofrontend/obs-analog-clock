@@ -58,8 +58,6 @@ body:not(:root) {
  * Layout
  * -------------------------------------------------------------------------- */
 .l-main {
-  text-align: center;
-
   h1 {
     margin: 0 0 10px;
     font-weight: bold;
@@ -67,6 +65,10 @@ body:not(:root) {
 
   &__preview {
     min-width: 300px;
+
+    h1 {
+      text-align: center;
+    }
   }
 
   &__form {
@@ -95,6 +97,7 @@ body:not(:root) {
     }
 
     &__form {
+      text-align: left;
       padding-bottom: 140px;
     }
   }
@@ -154,8 +157,6 @@ body:not(:root) {
 }
 
 .p-form-control {
-  text-align: left;
-
   label {
     display: block;
     padding: 4px 0;
@@ -191,6 +192,7 @@ body:not(:root) {
 }
 
 .p-reset {
+  text-align: right;
   margin-top: 40px;
 }
 
@@ -216,6 +218,7 @@ body:not(:root) {
  * Unique
  * -------------------------------------------------------------------------- */
 #time {
+  text-align: center;
   margin: 0 0 40px;
 }
 
