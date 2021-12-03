@@ -14,6 +14,7 @@
     "ejs": "^3.1.6",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
+    "nodemon": "^2.0.15",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.4",
     "postcss-loader": "^6.2.1",
@@ -44,6 +45,8 @@
     "prestart": "npm run ejs",
     "serve": "webpack serve",
     "start": "run-p serve watch",
-    "watch": "webpack --watch"
+    "watch": "run-p watch:*",
+    "watch:ejs": "nodemon --watch src/index.ejs -x \"npm run ejs\"",
+    "watch:wp": "webpack --watch"
   }
 }
