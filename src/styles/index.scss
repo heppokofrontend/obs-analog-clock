@@ -115,7 +115,7 @@ body:not(:root) {
 /* -----------------------------------------------------------------------------
  * Project
  * -------------------------------------------------------------------------- */
-.f-desc {
+.p-form-desc {
   padding: 12px 16px;
   margin: 0 0 40px;
   max-width: 300px;
@@ -148,7 +148,7 @@ body:not(:root) {
   }
 }
 
-.f-textfield {
+.p-form-textfield {
   text-align: left;
 
   label {
@@ -178,7 +178,7 @@ body:not(:root) {
     resize: vertical;
   }
 
-  + .f-textfield {
+  + .p-form-textfield {
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid #000;
@@ -190,7 +190,7 @@ body:not(:root) {
 }
 
 @media screen and (min-width: $bp-wide) {
-  .f-desc {
+  .p-form-desc {
     min-width: 400px;
     max-width: 400px;
   }

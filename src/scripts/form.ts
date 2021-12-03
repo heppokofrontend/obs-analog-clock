@@ -69,16 +69,13 @@ const render = () => {
     .l-footer {
       display: none !important;
     }
-
     .l-main {
       display: block !important;
     }
-
     .l-main__preview {
       position: static !important;
       padding: 0 !important;
     }
-
     #clock {
       margin-bottom: 0 !important;
     }
