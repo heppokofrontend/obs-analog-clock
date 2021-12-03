@@ -1,3 +1,6 @@
+/* -----------------------------------------------------------------------------
+ * Foundation
+ * -------------------------------------------------------------------------- */
 *,
 ::before,
 ::after {
@@ -31,6 +34,15 @@ a {
   color: inherit;
 }
 
+/* -----------------------------------------------------------------------------
+ * Variables
+ * -------------------------------------------------------------------------- */
+$bp: 700px;
+$bp-wide: 1000px;
+
+/* -----------------------------------------------------------------------------
+ * Base
+ * -------------------------------------------------------------------------- */
 body:not(:root) {
   padding: 60px 20px 0;
   display: flex;
@@ -42,6 +54,9 @@ body:not(:root) {
   background: #3c3b42;
 }
 
+/* -----------------------------------------------------------------------------
+ * Layout
+ * -------------------------------------------------------------------------- */
 .l-main {
   text-align: center;
 
@@ -59,6 +74,47 @@ body:not(:root) {
   }
 }
 
+.l-footer {
+  padding: 40px 0;
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #ccc;
+}
+
+@media screen and (min-width: $bp) {
+  .l-main {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+
+    &__preview {
+      position: sticky;
+      top: 10px;
+      padding: 0 10vw 50px 0;
+    }
+
+    &__form {
+      padding-bottom: 140px;
+    }
+  }
+}
+
+@media screen and (min-width: $bp-wide) {
+  .l-main {
+    &__preview {
+      max-width: calc(100% - 500px);
+      padding-right: 100px;
+    }
+
+    &__form {
+      max-width: 400px;
+    }
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * Project
+ * -------------------------------------------------------------------------- */
 .f-desc {
   padding: 12px 16px;
   margin: 0 0 40px;
@@ -129,6 +185,20 @@ body:not(:root) {
   }
 }
 
+.p-reset {
+  margin-top: 40px;
+}
+
+@media screen and (min-width: $bp-wide) {
+  .f-desc {
+    min-width: 400px;
+    max-width: 400px;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+ * Unique
+ * -------------------------------------------------------------------------- */
 #time {
   margin: 0 0 40px;
 }
@@ -156,51 +226,4 @@ body:not(:root) {
 #f-css {
   font-size: 12px;
   word-break: break-all;
-}
-
-.p-reset {
-  margin-top: 40px;
-}
-
-.l-footer {
-  padding: 40px 0;
-  width: 100%;
-  text-align: center;
-  border-top: 1px solid #ccc;
-}
-
-@media screen and (min-width: 700px) {
-  .l-main {
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row-reverse;
-
-    &__preview {
-      position: sticky;
-      top: 10px;
-      padding: 0 10vw 50px 0;
-    }
-
-    &__form {
-      padding-bottom: 140px;
-    }
-  }
-}
-
-@media screen and (min-width: 1000px) {
-  .l-main {
-    &__preview {
-      max-width: calc(100% - 500px);
-      padding-right: 100px;
-    }
-
-    &__form {
-      max-width: 400px;
-    }
-  }
-
-  .f-desc {
-    min-width: 400px;
-    max-width: 400px;
-  }
 }
