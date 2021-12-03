@@ -1,16 +1,16 @@
 /* -----------------------------------------------------------------------------
  * Foundation
  * -------------------------------------------------------------------------- */
+* {
+  all: unset;
+}
+
 *,
 ::before,
 ::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-* {
-  all: unset;
 }
 
 input, select, textarea, a, details {
@@ -39,6 +39,9 @@ a {
  * -------------------------------------------------------------------------- */
 $bp: 700px;
 $bp-wide: 1000px;
+:root {
+  --c-border: #ccc;
+}
 
 /* -----------------------------------------------------------------------------
  * Base
@@ -126,7 +129,7 @@ body:not(:root) {
   font-size: 14px;
   text-align: left;
   line-height: 1.6;
-  border: 1px solid #ccc;
+  border: 1px solid var(--c-border);
   border-radius: 4px;
 
   &__title {
@@ -210,7 +213,7 @@ body:not(:root) {
   display: inline-block;
   padding: 6px 10px 4px;
   text-decoration: none;
-  border: 1px solid #eee;
+  border: 1px solid var(--c-border);
   border-radius: 4px;
 }
 
