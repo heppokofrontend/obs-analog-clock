@@ -65,6 +65,7 @@
                     type="range"
                     class="p-layer-control__opacity"
                     data-id="${filename}"
+                    title="${NAME_LIST[i]}の不透明度"
                     min="0"
                     max="100"
                     step="1"
@@ -82,32 +83,101 @@
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title"><label for="f-size">Width & Height</label></p>
+          <div class="p-form-control__title">
+            <label for="f-size">Width & Height</label>
+            <details
+              class="p-form-control__help"
+            >
+              <summary>
+                <img src="./help.svg" alt="Hint" width="16" height="16" class="p-form-control__help-img">
+              </summary>
+
+              <div class="p-form-control__help-tooltip">
+                <p>時計の描画サイズを入力します。</p>
+                <p>OBSに読み込ませるときの「幅」と「高さ」にはこの値を設定します。</p>
+              </div>
+            </details>
+          </div>
           <p><input type="number" id="f-size" min="100" max="1200" /></p>
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title"><label for="f-scale">Scale（％）</label></p>
+          <div class="p-form-control__title">
+            <label for="f-scale">Scale（％）</label>
+            <details
+              class="p-form-control__help"
+            >
+              <summary>
+                <img src="./help.svg" alt="Hint" width="16" height="16" class="p-form-control__help-img">
+              </summary>
+
+              <div class="p-form-control__help-tooltip">
+                <p>背景画像に対する文字盤の描画サイズを入力します。</p>
+                <p>文字盤の外側をOBS上で調整する場合は100%で問題ありません。</p>
+              </div>
+            </details>
+          </div>
           <p><input type="number" id="f-scale" min="0" max="100" /></p>
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title"><label for="f-rotate-x">Rotate X</label></p>
+          <div class="p-form-control__title">
+            <label for="f-rotate-x">Rotate X</label>
+            <details
+              class="p-form-control__help"
+            >
+              <summary>
+                <img src="./help.svg" alt="Hint" width="16" height="16" class="p-form-control__help-img">
+              </summary>
+
+              <div class="p-form-control__help-tooltip">
+                <p>X軸（水平）を基準に文字盤を回転させます。</p>
+              </div>
+            </details>
+          </div>
           <p><input type="number" id="f-rotate-x" min="-360" max="360" /></p>
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title"><label for="f-rotate-y">Rotate Y</label></p>
+          <div class="p-form-control__title">
+            <label for="f-rotate-y">Rotate Y</label>
+            <details
+              class="p-form-control__help"
+            >
+              <summary>
+                <img src="./help.svg" alt="Hint" width="16" height="16" class="p-form-control__help-img">
+              </summary>
+
+              <div class="p-form-control__help-tooltip">
+                <p>Y軸（垂直）を基準に文字盤を回転させます。</p>
+              </div>
+            </details>
+          </div>
           <p><input type="number" id="f-rotate-y" min="-360" max="360" /></p>
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title"><label for="f-rotate-z">Rotate Z</label></p>
+          <div class="p-form-control__title">
+            <label for="f-rotate-z">Rotate Z</label>
+            <details
+              class="p-form-control__help"
+            >
+              <summary>
+                <img src="./help.svg" alt="Hint" width="16" height="16" class="p-form-control__help-img">
+              </summary>
+
+              <div class="p-form-control__help-tooltip">
+                <p>文字盤を傾けます。</p>
+              </div>
+            </details>
+          </div>
           <p><input type="number" id="f-rotate-z" min="-360" max="360" /></p>
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title"><label for="f-transition-sec">Transition - 秒針</label></p>
+          <div class="p-form-control__title">
+            <label for="f-transition-sec">Transition - 秒針</label>
+          </div>
           <p>
             <select id="f-transition-sec">
               <option value="off">OFF</option>
@@ -117,7 +187,9 @@
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title"><label for="f-transition-min">Transition - 長針</label></p>
+          <div class="p-form-control__title">
+            <label for="f-transition-min">Transition - 長針</label>
+          </div>
           <p>
             <select id="f-transition-min">
               <option value="off">OFF</option>
@@ -127,7 +199,9 @@
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title"><label for="f-transition-hr">Transition - 短針</label></p>
+          <div class="p-form-control__title">
+            <label for="f-transition-hr">Transition - 短針</label>
+          </div>
           <p>
             <select id="f-transition-hr">
               <option value="off">OFF</option>
@@ -156,26 +230,42 @@
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title">
-            <label for="f-diff">UTCとの時差（時間）</label>
-            <a
-              href="https://www.google.com/search?q=utc+time+difference"
-              target="_blank"
-              class="c-help"
+          <div class="p-form-control__title">
+            <label for="f-diff">UTCとの時差</label>
+            <details
+              class="p-form-control__help"
             >
-              <img src="./help.svg" alt="" title="UTCとの時差とは" width="16" height="16" class="c-help__img">
-            </a>
-          </p>
+              <summary>
+                <img src="./help.svg" alt="Hint" width="16" height="16" class="p-form-control__help-img">
+              </summary>
+
+              <div class="p-form-control__help-tooltip">
+                <p>UTCとは協定世界時のことで、世界の基準となっている時刻です。</p>
+                <p>UTCとの時差がわかれば、世界の現地時間を求めることができます。</p>
+                <a
+                  href="https://www.google.com/search?q=utc+time+difference"
+                  target="_blank"
+                  class="p-form-control__help-more"
+                >
+                  What is the time difference from UTC?
+                </a>
+              </div>
+            </details>
+          </div>
           <p><input id="f-diff" type="number" min="-24" max="24" /></p>
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title"><label for="f-url">OBS - URL</label></p>
+          <div class="p-form-control__title">
+            <label for="f-url">OBS - URL</label>
+          </div>
           <p><input id="f-url" class="js-copy" readonly /></p>
         </div>
 
         <div class="p-form-control">
-          <p class="p-form-control__title"><label for="f-css">OBS - カスタム CSS</label></p>
+          <div class="p-form-control__title">
+            <label for="f-css">OBS - カスタム CSS</label>
+          </div>
           <p><textarea id="f-css" class="js-copy" readonly></textarea></p>
         </div>
 
