@@ -52,7 +52,7 @@
 
           <ol class="p-layer-control__list" id="layer-order">
             <%- FILE_LIST.map((filename, i) => `
-              <li class="p-layer-control__listitem">
+              <li class="p-layer-control__listitem js-layer" data-id="${filename}">
                 <span class="p-layer-control__thumbwrap">
                   <img src="./clock/${filename}.png" alt="" class="p-layer-control__thumb">
                 </span>
@@ -64,7 +64,7 @@
                   <input
                     type="range"
                     class="p-layer-control__opacity"
-                    data-id="${filename}"
+                    id="f-opacity-${filename}"
                     title="${NAME_LIST[i]}の不透明度"
                     min="0"
                     max="100"
@@ -72,10 +72,10 @@
                   >
                 </span>
                 <span class="p-layer-control__btnwrap">
-                  <button type="button" class="p-layer-control__btn">Up</button>
+                  <button type="button" class="p-layer-control__btn js-btn-layer">Up</button>
                 </span>
                 <span class="p-layer-control__btnwrap">
-                  <button type="button" class="p-layer-control__btn">Down</button>
+                  <button type="button" class="p-layer-control__btn js-btn-layer">Down</button>
                 </span>
               </li>
             `).reverse().join(''); %>

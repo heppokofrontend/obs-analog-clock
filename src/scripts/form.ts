@@ -4,6 +4,10 @@ import {status} from './utils/status';
 type FromControl = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
 const style = document.createElement('style');
 const form = {
+  opacityHr: document.querySelector<HTMLInputElement>('#f-opacity-hr')!,
+  opacityMin: document.querySelector<HTMLInputElement>('#f-opacity-min')!,
+  opacitySec: document.querySelector<HTMLInputElement>('#f-opacity-sec')!,
+  opacityBase: document.querySelector<HTMLInputElement>('#f-opacity-base')!,
   size: document.querySelector<HTMLInputElement>('#f-size')!,
   rotateX: document.querySelector<HTMLInputElement>('#f-rotate-x')!,
   rotateY: document.querySelector<HTMLInputElement>('#f-rotate-y')!,
@@ -19,6 +23,10 @@ const form = {
 const render = () => {
   const {$_GET} = status;
 
+  form.opacityHr.value = $_GET['opacity-hr'] || '100';
+  form.opacityMin.value = $_GET['opacity-min'] || '100';
+  form.opacitySec.value = $_GET['opacity-sec'] || '100';
+  form.opacityBase.value = $_GET['opacity-base'] || '100';
   form.size.value = $_GET.size || '400';
   form.rotateX.value = $_GET['rotate-x'] || '0';
   form.rotateY.value = $_GET['rotate-y'] || '0';
@@ -51,6 +59,18 @@ const render = () => {
     .p-clock__item {
       width: ${form.size.value}px;
       height: ${form.size.value}px;
+    }
+    ${
+      $_GET['opacity-hr'] ? `#hr {opacity: ${Number($_GET['opacity-hr']) / 100};}` : ''
+    }
+    ${
+      $_GET['opacity-min'] ? `#min {opacity: ${Number($_GET['opacity-min']) / 100};}` : ''
+    }
+    ${
+      $_GET['opacity-sec'] ? `#sec {opacity: ${Number($_GET['opacity-sec']) / 100};}` : ''
+    }
+    ${
+      $_GET['opacity-base'] ? `#base {opacity: ${Number($_GET['opacity-base']) / 100};}` : ''
     }
   `;
   form.css.value = `
@@ -126,6 +146,18 @@ const handler = function (this: FromControl) {
 };
 
 for (const [_, formControl] of Object.entries(form)) {
+  if (formControl.type === 'range') {
+    let drag = false;
+
+    formControl.addEventListener('mousedown', () => drag = true);
+    formControl.addEventListener('mousemove', () => {
+      if (drag) {
+        handler.call(formControl);
+      }
+    });
+    window.addEventListener('mouseup', () => drag = false);
+  }
+
   formControl.addEventListener('change', handler);
 }
 
