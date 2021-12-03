@@ -147,6 +147,17 @@ body:not(:root) {
   border-radius: 4px;
 }
 
+.c-help {
+  display: block;
+  padding: 5px 0 3px;
+
+  &__img {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+}
+
 /* -----------------------------------------------------------------------------
  * Project
  * -------------------------------------------------------------------------- */
@@ -269,8 +280,13 @@ body:not(:root) {
   margin-bottom: 20px;
   border-bottom: 1px solid var(--c-border);
 
+  &__title {
+    display: flex;
+  }
+
   label {
     @extend %label;
+    flex-grow: 1;
   }
 
   input,
