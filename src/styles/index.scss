@@ -153,7 +153,7 @@ body:not(:root) {
   }
 }
 
-.p-form-textfield {
+.p-form-control {
   text-align: left;
 
   label {
@@ -183,7 +183,7 @@ body:not(:root) {
     resize: vertical;
   }
 
-  + .p-form-textfield {
+  + .p-form-control {
     margin-top: 20px;
     padding-top: 20px;
     border-top: 1px solid #000;
