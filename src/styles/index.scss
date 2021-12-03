@@ -153,6 +153,11 @@ body:not(:root) {
   }
 }
 
+#f-css {
+  font-size: 12px;
+  word-break: break-all;
+}
+
 .p-reset {
   margin-top: 40px;
 }
