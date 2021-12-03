@@ -11,6 +11,7 @@
     "autoprefixer": "^10.4.0",
     "copy-webpack-plugin": "^10.0.0",
     "css-loader": "^6.5.1",
+    "ejs": "^3.1.6",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.4.5",
     "npm-run-all": "^4.1.5",
@@ -36,6 +37,7 @@
     "url": "git+https://github.com/heppokofrontend/obs-analog-clock.git"
   },
   "scripts": {
+    "ejs": "ejs ./src/index.ejs -o ./index.html",
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "build:prod": "webpack --mode=production --node-env=production",
