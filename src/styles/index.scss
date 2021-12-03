@@ -10,16 +10,21 @@
   all: unset;
 }
 
-input, select, textarea, a {
+input, select, textarea, a, details {
   all: revert;
+  box-sizing: border-box;
 }
 
 head, script, style {
   display: none;
 }
 
-div, main, footer, h1, p {
+div, main, footer, h1, p, summary {
   display: block;
+}
+
+summary {
+  outline: revert;
 }
 
 a {
@@ -47,6 +52,43 @@ body:not(:root) {
 
   &__preview {
     min-width: 300px;
+  }
+
+  &__form {
+    min-width: 300px;
+  }
+}
+
+.f-desc {
+  padding: 12px 16px;
+  margin: 0 0 40px;
+  max-width: 300px;
+  width: 100%;
+  font-size: 14px;
+  text-align: left;
+  line-height: 1.6;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+  &__title {
+    cursor: pointer;
+    text-align: center;
+
+    + p {
+      margin-top: 10px;
+    }
+  }
+
+  ul {
+    padding: 0 10px;
+    margin: .75em 0;
+    display: block;
+  }
+
+  li {
+    display: list-item;
+    list-style: disc;
+    list-style-position: inside;
   }
 }
 
@@ -126,6 +168,7 @@ body:not(:root) {
   .l-main {
     display: flex;
     align-items: flex-start;
+    flex-direction: row-reverse;
 
     &__preview {
       position: sticky;
@@ -136,5 +179,23 @@ body:not(:root) {
     &__form {
       padding-bottom: 140px;
     }
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  .l-main {
+    &__preview {
+      max-width: calc(100% - 500px);
+      padding-right: 100px;
+    }
+
+    &__form {
+      max-width: 400px;
+    }
+  }
+
+  .f-desc {
+    min-width: 400px;
+    max-width: 400px;
   }
 }

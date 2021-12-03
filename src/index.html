@@ -7,6 +7,91 @@
   </head>
   <body>
     <main class="l-main">
+      <div class="l-main__form">
+        <details class="f-desc">
+          <summary class="f-desc__title">🔰 HOW TO USE 🔰</summary>
+          <p>次の5種類の画像を好きな画像で上書きしてください。</p>
+          <p>これらの画像はすべて正方形を想定しています。</p>
+          <p>表示したくない場合は、透明な画像で上書きします。</p>
+          <ul>
+            <li>./clock/base.png</li>
+            <li>./clock/bg.png</li>
+            <li>./clock/hr.png</li>
+            <li>./clock/min.png</li>
+            <li>./clock/sec.png</li>
+          </ul>
+          <p>各種パラメタを変更してEnterキーを押下すると「OBS - URL」の値が変わります。</p>
+          <p>調整後、次の2つの値をOBSのブラウザソースのプロパティに設定してください。</p>
+
+          <ul>
+            <li>OBS - URL</li>
+            <li>OBS - カスタムCSS</li>
+          </ul>
+
+          <p>角度がついている時計などを設置したいときは、文字盤と針だけ正面位置で書き出し後、背景に合わせてRotateとScaleを調整してみてください🥒</p>
+        </details>
+
+        <div class="f-textfield">
+          <p><label for="f-size">サイズ</label></p>
+          <p><input type="number" id="f-size" min="100" max="1200" /></p>
+        </div>
+
+        <div class="f-textfield">
+          <p><label for="f-rotate-x">Rotate X</label></p>
+          <p><input type="number" id="f-rotate-x" min="-360" max="360" /></p>
+        </div>
+
+        <div class="f-textfield">
+          <p><label for="f-rotate-y">Rotate Y</label></p>
+          <p><input type="number" id="f-rotate-y" min="-360" max="360" /></p>
+        </div>
+
+        <div class="f-textfield">
+          <p><label for="f-rotate-z">Rotate Z</label></p>
+          <p><input type="number" id="f-rotate-z" min="-360" max="360" /></p>
+        </div>
+
+        <div class="f-textfield">
+          <p><label for="f-scale">Scale（％）</label></p>
+          <p><input type="number" id="f-scale" min="0" max="100" /></p>
+        </div>
+
+        <div class="f-textfield">
+          <p><label for="f-transition-sec">トランジション - 秒針</label></p>
+          <p>
+            <select id="f-transition-sec">
+              <option value="off">OFF</option>
+              <option value="on">ON</option>
+            </select>
+          </p>
+        </div>
+
+        <div class="f-textfield">
+          <p><label for="f-transition-min">トランジション - 長針</label></p>
+          <p>
+            <select id="f-transition-min">
+              <option value="off">OFF</option>
+              <option value="on">ON</option>
+            </select>
+          </p>
+        </div>
+
+        <div class="f-textfield">
+          <p><label for="f-transition-hr">トランジション - 短針</label></p>
+          <p>
+            <select id="f-transition-hr">
+              <option value="off">OFF</option>
+              <option value="on">ON</option>
+            </select>
+          </p>
+        </div>
+
+        <div class="f-textfield">
+          <p><label for="f-diff">UTC/協定世界時との時差（時間）</label></p>
+          <p><input id="f-diff" type="number" min="-24" max="24" /></p>
+        </div>
+      </div>
+
       <div class="l-main__preview">
         <h1>OBS Analog Clock</h1>
 
@@ -52,68 +137,6 @@
         </div>
 
         <p class="p-reset"><a href="./">RESET</a></p>
-      </div>
-
-      <div class="l-main__form">
-        <div class="f-textfield">
-          <p><label for="f-size">サイズ</label></p>
-          <p><input type="number" id="f-size" min="100" max="1200" /></p>
-        </div>
-
-        <div class="f-textfield">
-          <p><label for="f-rotate-x">Rotate X</label></p>
-          <p><input type="number" id="f-rotate-x" min="-360" max="360" /></p>
-        </div>
-
-        <div class="f-textfield">
-          <p><label for="f-rotate-y">Rotate Y</label></p>
-          <p><input type="number" id="f-rotate-y" min="-360" max="360" /></p>
-        </div>
-
-        <div class="f-textfield">
-          <p><label for="f-rotate-z">Rotate Z</label></p>
-          <p><input type="number" id="f-rotate-z" min="-360" max="360" /></p>
-        </div>
-
-        <div class="f-textfield">
-          <p><label for="f-scale">スケール（％）</label></p>
-          <p><input type="number" id="f-scale" min="0" max="100" /></p>
-        </div>
-
-        <div class="f-textfield">
-          <p><label for="f-transition-sec">トランジション - 秒針</label></p>
-          <p>
-            <select id="f-transition-sec">
-              <option value="off">OFF</option>
-              <option value="on">ON</option>
-            </select>
-          </p>
-        </div>
-
-        <div class="f-textfield">
-          <p><label for="f-transition-min">トランジション - 長針</label></p>
-          <p>
-            <select id="f-transition-min">
-              <option value="off">OFF</option>
-              <option value="on">ON</option>
-            </select>
-          </p>
-        </div>
-
-        <div class="f-textfield">
-          <p><label for="f-transition-hr">トランジション - 短針</label></p>
-          <p>
-            <select id="f-transition-hr">
-              <option value="off">OFF</option>
-              <option value="on">ON</option>
-            </select>
-          </p>
-        </div>
-
-        <div class="f-textfield">
-          <p><label for="f-diff">UTC/協定世界時との時差（時間）</label></p>
-          <p><input id="f-diff" type="number" min="-24" max="24" /></p>
-        </div>
       </div>
     </main>
 
