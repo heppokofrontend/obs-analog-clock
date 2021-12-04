@@ -3,6 +3,19 @@ import {status} from './utils/status';
 // 設定まわり
 type FromControl = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
 const style = document.createElement('style');
+const layers = {
+  wrap: document.getElementById('layer-order')!,
+  items: Object.fromEntries(
+    [...document.querySelectorAll<HTMLLIElement>('.js-layer')].map(l => {
+      const id = l.dataset.id;
+
+      return [id, l];
+    })
+  ) as {
+    [x: string]: HTMLLIElement
+  },
+  cache: '',
+};
 const form = {
   opacityHr: document.querySelector<HTMLInputElement>('#f-opacity-hr')!,
   opacityMin: document.querySelector<HTMLInputElement>('#f-opacity-min')!,
@@ -22,6 +35,32 @@ const form = {
 };
 const render = () => {
   const {$_GET} = status;
+  const layerParam: string[] | undefined = $_GET['layer']?.split(',');
+  const cache = layerParam?.join();
+
+  style.textContent = '';
+
+  // レイヤーソート
+  if (layerParam?.length === 4) {
+    layerParam.forEach((id, idx) => {
+      style.textContent += `
+        #${id} {
+          z-index: ${4 - idx};
+        }
+      `;
+    });
+
+    if (layers.cache !== cache) {
+      const f = document.createDocumentFragment();
+
+      for (const id of layerParam) {
+        f.append(layers.items[id]);
+      }
+
+      layers.wrap.append(f);
+      layers.cache = cache as string;
+    }
+  }
 
   form.opacityHr.value = $_GET['opacity-hr'] || '100';
   form.opacityMin.value = $_GET['opacity-min'] || '100';
@@ -36,7 +75,7 @@ const render = () => {
   form.transitionSec.value = $_GET['transition-sec'] || 'off';
   form.scale.value = $_GET.scale || '100';
   form.diff.value = $_GET.diff || '9';
-  style.textContent = `
+  style.textContent += `
     .p-clock__inner {
       ${
         (
@@ -102,8 +141,18 @@ const render = () => {
   `.replace(/^\s+|\n/gmu, '');
   form.url.value = location.href;
 }
-const handler = function (this: FromControl) {
+const replaceState = (name: string, value: string) => {
   const {searchParams, origin, pathname} = new URL(location.href);
+
+  if (value === '') {
+    searchParams.delete(name);
+  } else {
+    searchParams.set(name, value);
+  }
+
+  history.replaceState('', '', `${origin}${pathname}?${searchParams.toString()}`);
+};
+const handler = function (this: FromControl) {
   const name = this.id.replace('f-', '');
   const value = (() => {
     if (this.tagName.toLocaleLowerCase() === 'select') {
@@ -134,17 +183,36 @@ const handler = function (this: FromControl) {
     return '';
   })();
 
-  if (value === '') {
-    searchParams.delete(name);
-  } else {
-    searchParams.set(name, value);
-  }
-
-  history.replaceState('', '', `${origin}${pathname}?${searchParams.toString()}`);
-
+  replaceState(name, value);
   render();
 };
 
+// layer
+for (const layer of Object.values(layers.items)) {
+  const btns = layer.querySelectorAll('.js-btn-layer');
+  const click = function (this: HTMLButtonElement) {
+    if (this.dataset.move === 'up') {
+      layer.previousElementSibling?.before(layer);
+    } else {
+      layer.nextElementSibling?.after(layer);
+    }
+
+    replaceState(
+      'layer',
+      [...layer.parentElement?.children || '']?.map(
+        (li: any) => li?.dataset?.id
+      ).join(',')
+    );
+    render();
+    this.focus();
+  }
+
+  for (const btn of btns) {
+    btn.addEventListener('click', click);
+  }
+}
+
+// forms
 for (const [_, formControl] of Object.entries(form)) {
   if (formControl.type === 'range') {
     let drag = false;
