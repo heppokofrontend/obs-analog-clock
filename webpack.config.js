@@ -40,6 +40,13 @@ const config = {
     rules: [
       {
         test: /\.(ts|tsx)$/i,
+        loader: 'babel-loader',
+        options: {
+          plugins: ['@babel/plugin-proposal-optional-chaining'],
+        }
+      },
+      {
+        test: /\.(ts|tsx)$/i,
         loader: "ts-loader",
         exclude: ["/node_modules/"],
       },

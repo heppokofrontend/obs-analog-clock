@@ -7,8 +7,10 @@
     "url": "https://github.com/heppokofrontend/obs-analog-clock/issues"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.16.0",
     "@webpack-cli/generators": "^2.4.1",
     "autoprefixer": "^10.4.0",
+    "babel-loader": "^8.2.3",
     "copy-webpack-plugin": "^10.0.0",
     "css-loader": "^6.5.1",
     "ejs": "^3.1.6",
