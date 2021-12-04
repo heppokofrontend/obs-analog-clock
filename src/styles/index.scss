@@ -46,6 +46,25 @@ $bp-wide: 1000px;
     box-shadow: 4px 4px 16px 0 rgba(0, 0, 0, .4);
   }
 
+  &__help-default {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px 0 0;
+    color: #fff;
+
+    span {
+      color: #b2b2b2;
+
+      &:first-child {
+        font-weight: bold;
+      }
+
+      &:last-child {
+        padding: 0 0 0 8px;
+      }
+    }
+  }
+
   &__help-more {
     margin: 10px 0 0;
     display: inline-block;
