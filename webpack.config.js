@@ -32,6 +32,10 @@ const config = {
         {
           from: './static/clock/**/*',
           to: './clock/[name][ext]',
+        },
+        {
+          from: './static/*',
+          to: './[name][ext]',
         }
       ],
     }),
@@ -59,7 +63,7 @@ const config = {
         use: [stylesHandler, "css-loader", "postcss-loader"],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
+        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|svg)$/i,
         type: "asset",
       },
 
