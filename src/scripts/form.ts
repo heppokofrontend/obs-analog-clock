@@ -17,6 +17,7 @@ const layers = {
   cache: '',
 };
 const form = {
+  bg: document.querySelector<HTMLSelectElement>('#f-bg')!,
   opacityHr: document.querySelector<HTMLInputElement>('#f-opacity-hr')!,
   opacityMin: document.querySelector<HTMLInputElement>('#f-opacity-min')!,
   opacitySec: document.querySelector<HTMLInputElement>('#f-opacity-sec')!,
@@ -62,6 +63,7 @@ const render = () => {
     }
   }
 
+  form.bg.value = $_GET['bg'] || 'on';
   form.opacityHr.value = $_GET['opacity-hr'] || '100';
   form.opacityMin.value = $_GET['opacity-min'] || '100';
   form.opacitySec.value = $_GET['opacity-sec'] || '100';
@@ -76,6 +78,13 @@ const render = () => {
   form.scale.value = $_GET.scale || '100';
   form.diff.value = $_GET.diff || '9';
   style.textContent += `
+    #clock {
+      ${
+        $_GET['bg'] !== 'on' ?
+        'background: transparent !important;' :
+        ''
+      }
+    }
     .p-clock__inner {
       ${
         (

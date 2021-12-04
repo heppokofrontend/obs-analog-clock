@@ -48,7 +48,21 @@
         </details>
 
         <div class="p-layer-control" role="group" aria-labelledby="l">
-          <p class="p-layer-control__title" id="l">Layer order</p>
+          <div class="p-layer-control__header">
+            <p class="p-layer-control__title" id="l">Layer order</p>
+            <details
+              class="p-layer-control__help"
+            >
+              <summary>
+                <img src="./help.svg" alt="Hint" width="16" height="16" class="p-layer-control__help-img">
+              </summary>
+
+              <div class="p-layer-control__help-tooltip">
+                <p>レイヤーの透明度、順序を設定します。</p>
+                <p>デフォルトの順序は「秒針」「長針」「短針」「文字盤」です。</p>
+              </div>
+            </details>
+          </div>
 
           <ol class="p-layer-control__list" id="layer-order">
             <%- FILE_LIST.map((filename, i) => `
@@ -88,6 +102,29 @@
               </li>
             `).reverse().join(''); %>
           </ol>
+        </div>
+
+        <div class="p-form-control">
+          <div class="p-form-control__title">
+            <label for="bg">Background</label>
+            <details
+              class="p-form-control__help"
+            >
+              <summary>
+                <img src="./help.svg" alt="Hint" width="16" height="16" class="p-form-control__help-img">
+              </summary>
+
+              <div class="p-form-control__help-tooltip">
+                <p>背景画像の表示を切り替えます。</p>
+              </div>
+            </details>
+          </div>
+          <p>
+            <select id="f-bg">
+              <option value="off">OFF</option>
+              <option value="on">ON</option>
+            </select>
+          </p>
         </div>
 
         <div class="p-form-control">
