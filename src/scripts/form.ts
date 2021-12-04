@@ -36,14 +36,14 @@ const form = {
 };
 const render = () => {
   const {$_GET} = status;
-  const layerParam: string[] | undefined = $_GET['layer']?.split(',');
-  const cache = layerParam?.join();
+  const layerParam: string = $_GET['layer'] || '';
+  const layerOrder = layerParam.split(',');
 
   style.textContent = '';
 
   // レイヤーソート
-  if (layerParam?.length === 4) {
-    layerParam.forEach((id, idx) => {
+  if (layerOrder.length === 4) {
+    layerOrder.forEach((id, idx) => {
       style.textContent += `
         #${id} {
           z-index: ${4 - idx};
@@ -51,15 +51,15 @@ const render = () => {
       `;
     });
 
-    if (layers.cache !== cache) {
+    if (layers.cache !== layerParam) {
       const f = document.createDocumentFragment();
 
-      for (const id of layerParam) {
+      for (const id of layerOrder) {
         f.append(layers.items[id]);
       }
 
       layers.wrap.append(f);
-      layers.cache = cache as string;
+      layers.cache = layerParam;
     }
   }
 
