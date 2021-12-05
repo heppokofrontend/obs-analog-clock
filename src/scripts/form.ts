@@ -32,6 +32,7 @@ const form = Object.fromEntries(
     return [makeId(elm.id), elm];
   })
 );
+const base = document.querySelector<HTMLImageElement>('#base')!;
 const render = () => {
   const {$_GET} = status;
   const layerParam: string = $_GET['layer'] || '';
@@ -66,7 +67,7 @@ const render = () => {
   form.opacityMin.value = $_GET['opacity-min'] || '100';
   form.opacitySec.value = $_GET['opacity-sec'] || '100';
   form.opacityBase.value = $_GET['opacity-base'] || '100';
-  form.size.value = $_GET.size || '400';
+  form.size.value = $_GET.size || base.naturalWidth;
   form.rotateX.value = $_GET['rotate-x'] || '0';
   form.rotateY.value = $_GET['rotate-y'] || '0';
   form.rotateZ.value = $_GET['rotate-z'] || '0';
@@ -249,6 +250,6 @@ for (const [_, formControl] of Object.entries(form)) {
 }
 
 document.head.appendChild(style);
-render();
+window.addEventListener('load', render);
 
 export {};
