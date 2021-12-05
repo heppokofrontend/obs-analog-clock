@@ -173,14 +173,20 @@ const handler = function (this: FromControl) {
       'max' in this &&
       'min' in this
     ) {
-      const max = Number(this.max);
-      const min = Number(this.min);
+      const max = Number(this.max || NaN);
+      const min = Number(this.min || NaN);
 
-      if (max < _val) {
+      if (
+        !Number.isNaN(max) &&
+        max < _val
+      ) {
         return this.max;
       }
 
-      if (_val < min) {
+      if (
+        !Number.isNaN(min) &&
+        _val < min
+      ) {
         return this.min;
       }
 
