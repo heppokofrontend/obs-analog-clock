@@ -36,7 +36,7 @@ $bp-wide: 1000px;
     top: 100%;
     z-index: 1;
     padding: 10px;
-    max-width: 90%;
+    max-width: 100%;
     font-size: 12px;
     line-height: 2;
     color: #ddd;
@@ -278,6 +278,7 @@ body:not(:root) {
   &__name {
     padding: 0 10px;
     flex-grow: 1;
+    max-width: calc(100% - 280px);
     line-height: 1;
   }
 
