@@ -70,6 +70,8 @@ const render = () => {
   form.rotateX.value = $_GET['rotate-x'] || '0';
   form.rotateY.value = $_GET['rotate-y'] || '0';
   form.rotateZ.value = $_GET['rotate-z'] || '0';
+  form.moveX.value = $_GET['move-x'] || '0';
+  form.moveY.value = $_GET['move-y'] || '0';
   form.transitionHr.value = $_GET['transition-hr'] || 'on';
   form.transitionMin.value = $_GET['transition-min'] || 'on';
   form.transitionSec.value = $_GET['transition-sec'] || 'off';
@@ -89,10 +91,14 @@ const render = () => {
           $_GET['rotate-x'] ||
           $_GET['rotate-y'] ||
           $_GET['rotate-z'] ||
-          $_GET.scale
+          $_GET.scale ||
+          $_GET['move-x'] ||
+          $_GET['move-y']
         ) ? (
           `transform: ${
             [
+              $_GET['move-x'] ? `translateX(${$_GET['move-x']}px)` : '',
+              $_GET['move-y'] ? `translateY(${$_GET['move-y']}px)` : '',
               $_GET['rotate-x'] ? `rotateX(${$_GET['rotate-x']}deg)` : '',
               $_GET['rotate-y'] ? `rotateY(${$_GET['rotate-y']}deg)` : '',
               $_GET['rotate-z'] ? `rotateZ(${$_GET['rotate-z']}deg)` : '',
