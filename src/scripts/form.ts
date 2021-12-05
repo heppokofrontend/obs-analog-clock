@@ -16,24 +16,22 @@ const layers = {
   },
   cache: '',
 };
-const form = {
-  bg: document.querySelector<HTMLSelectElement>('#f-bg')!,
-  opacityHr: document.querySelector<HTMLInputElement>('#f-opacity-hr')!,
-  opacityMin: document.querySelector<HTMLInputElement>('#f-opacity-min')!,
-  opacitySec: document.querySelector<HTMLInputElement>('#f-opacity-sec')!,
-  opacityBase: document.querySelector<HTMLInputElement>('#f-opacity-base')!,
-  size: document.querySelector<HTMLInputElement>('#f-size')!,
-  rotateX: document.querySelector<HTMLInputElement>('#f-rotate-x')!,
-  rotateY: document.querySelector<HTMLInputElement>('#f-rotate-y')!,
-  rotateZ: document.querySelector<HTMLInputElement>('#f-rotate-z')!,
-  transitionHr: document.querySelector<HTMLSelectElement>('#f-transition-hr')!,
-  transitionMin: document.querySelector<HTMLSelectElement>('#f-transition-min')!,
-  transitionSec: document.querySelector<HTMLSelectElement>('#f-transition-sec')!,
-  scale: document.querySelector<HTMLInputElement>('#f-scale')!,
-  diff: document.querySelector<HTMLInputElement>('#f-diff')!,
-  url: document.querySelector<HTMLInputElement>('#f-url')!,
-  css: document.querySelector<HTMLTextAreaElement>('#f-css')!,
+/**
+ * prefixを外して残りをキャメルケースにして返します
+ * @param id - FormControlのid属性値
+ * @returns - 整形した値
+ */
+const makeId = (id: string) => {
+  const name = id.replace('f-', '');
+
+  return name.replace(/-(.)/ug, (_, p1) => p1.toUpperCase());
 };
+/** FormControlのNodeセット */
+const form = Object.fromEntries(
+  [...document.querySelectorAll<FromControl>('[id^="f-"]')].map(elm => {
+    return [makeId(elm.id), elm];
+  })
+);
 const render = () => {
   const {$_GET} = status;
   const layerParam: string = $_GET['layer'] || '';
