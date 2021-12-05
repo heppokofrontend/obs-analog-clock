@@ -1,6 +1,7 @@
 // Generated using webpack-cli https://github.com/webpack/webpack-cli
 
 const path = require("path");
+const {version} = require('./package.json');
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -12,7 +13,7 @@ const stylesHandler = MiniCssExtractPlugin.loader;
 const config = {
   entry: "./src/scripts/index.ts",
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, `obs-analog-clock-v${version}`),
   },
   devServer: {
     open: true,
