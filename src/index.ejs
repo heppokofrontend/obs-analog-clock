@@ -38,8 +38,10 @@
             <p>調整後、次の2つの値をOBSのブラウザソースのプロパティに設定してください。</p>
             <ul>
               <li>OBS - URL</li>
+              <li>OBS - 幅・高さ</li>
               <li>OBS - カスタムCSS</li>
             </ul>
+            <p>※ このページは画面幅1920px以上のモニタでの全画面表示のみ対応しています。</p>
           </div>
         </details>
 
@@ -351,6 +353,7 @@
         <p id="time"></p>
 
         <div id="clock" class="p-clock" style="background-image: url(./clock/bg.png);">
+          <img src="./clock/bg.png" alt="" id="bg">
           <div class="p-clock__inner">
             <%- FILE_LIST.map(filename => `
               <img
@@ -414,7 +417,7 @@
                 <p>最小サイズは100px、最大サイズは1200pxです。</p>
                 <p class="p-layer-control__help-default">
                   <span>Default: </span>
-                  <span>base.pngの横幅</span>
+                  <span>素材画像の横幅</span>
                 </p>
               </div>
             </details>

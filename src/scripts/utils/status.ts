@@ -13,8 +13,6 @@ export const status = {
     if (cache.url !== location.href) {
       cache.url = location.href;
       cache.$_GET = getUrlQuery();
-
-      console.log(0);
     }
 
     return cache.$_GET;

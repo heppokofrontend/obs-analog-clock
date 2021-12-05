@@ -388,6 +388,15 @@ body:not(:root) {
   margin: 0 0 40px;
 }
 
+#bg {
+  position: fixed;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  z-index: -1;
+  visibility: hidden;
+}
+
 #clock {
   position: relative;
   display: inline-block;

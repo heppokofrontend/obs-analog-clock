@@ -3,6 +3,39 @@ import {status} from './utils/status';
 // 設定まわり
 type FromControl = HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
 const style = document.createElement('style');
+const getSize = (() => {
+  const base = document.querySelector<HTMLImageElement>('#base')!;
+  const hr = document.querySelector<HTMLImageElement>('#hr')!;
+  const min = document.querySelector<HTMLImageElement>('#min')!;
+  const sec = document.querySelector<HTMLImageElement>('#sec')!;
+  const hiddenBgImage = document.querySelector<HTMLImageElement>('#bg')!;
+
+  return () => {
+    const sizes = [...new Set([
+      `${sec.naturalWidth}x${sec.naturalHeight}`,
+      `${min.naturalWidth}x${min.naturalHeight}`,
+      `${hr.naturalWidth}x${hr.naturalHeight}`,
+      `${base.naturalWidth}x${base.naturalHeight}`,
+      `${hiddenBgImage.naturalWidth}x${hiddenBgImage.naturalHeight}`,
+    ])];
+
+    if (sizes.length !== 1) {
+      document.body.innerHTML = `
+        <h1 style="margin: 0 0 2em">OBS Analog Clock Error</h1>
+        <p style="margin: 0 0 1em">画像の読み込みにしました。</p>
+        <p>5枚の画像はすべて同じサイズの正方形に設定してください。</p>
+        <p style="margin: 0 0 1em">検出されたサイズのパターン</p>
+        <p>[${sizes.join(', ')}]</p>
+      `;
+
+      throw new TypeError('ページをご確認ください。');
+    }
+
+    const size = Number(sizes[0]!.split('x')[0]);
+
+    return String(size < 1200 ? 100 < size ? size : 100 : 1200);
+  }
+})();
 const layers = {
   wrap: document.getElementById('layer-order')!,
   items: Object.fromEntries(
@@ -32,7 +65,7 @@ const form = Object.fromEntries(
     return [makeId(elm.id), elm];
   })
 );
-const base = document.querySelector<HTMLImageElement>('#base')!;
+
 const render = () => {
   const {$_GET} = status;
   const layerParam: string = $_GET['layer'] || '';
@@ -67,9 +100,7 @@ const render = () => {
   form.opacityMin.value = $_GET['opacity-min'] || '100';
   form.opacitySec.value = $_GET['opacity-sec'] || '100';
   form.opacityBase.value = $_GET['opacity-base'] || '100';
-  form.size.value = $_GET.size || String(
-    base.naturalWidth < 1200 ?
-    100 < base.naturalWidth ? base.naturalHeight : 100 : 1200);
+  form.size.value = $_GET.size || getSize();;
   form.rotateX.value = $_GET['rotate-x'] || '0';
   form.rotateY.value = $_GET['rotate-y'] || '0';
   form.rotateZ.value = $_GET['rotate-z'] || '0';
