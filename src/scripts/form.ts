@@ -67,7 +67,7 @@ const render = () => {
   form.opacityMin.value = $_GET['opacity-min'] || '100';
   form.opacitySec.value = $_GET['opacity-sec'] || '100';
   form.opacityBase.value = $_GET['opacity-base'] || '100';
-  form.size.value = $_GET.size || base.naturalWidth;
+  form.size.value = $_GET.size || String(base.naturalWidth < 1200 ? base.naturalWidth : 1200);
   form.rotateX.value = $_GET['rotate-x'] || '0';
   form.rotateY.value = $_GET['rotate-y'] || '0';
   form.rotateZ.value = $_GET['rotate-z'] || '0';
