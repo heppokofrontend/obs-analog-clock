@@ -80,7 +80,7 @@ const render = () => {
   style.textContent += `
     #clock {
       ${
-        $_GET['bg'] !== 'on' ?
+        $_GET['bg'] === 'off' ?
         'background: transparent !important;' :
         ''
       }
