@@ -46,7 +46,7 @@
     "ejs": "ejs ./src/index.ejs -o ./index.html",
     "postejs": "html-minifier ./index.html --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-tag-whitespace --sort-attributes -o ./index.html",
     "prebuild": "npm run clean && npm run ejs",
-    "preinstall": "git config --global commit.template .gitmessage",
+    "preinstall": "git config commit.template .gitmessage",
     "prestart": "npm run ejs",
     "serve": "webpack serve --mode=development",
     "start": "run-p serve watch",
