@@ -1,4 +1,6 @@
-# 🕑 OBS Analog Clock - OBS上でアナログ時計を動かすことができるやつ
+# 🕑 OBS Analog Clock 
+
+またの名を「OBS上でアナログ時計を動かすことができるやつ」。
 
 ![](docs/main.png)
 
