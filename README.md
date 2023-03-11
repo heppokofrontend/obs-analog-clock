@@ -1,4 +1,4 @@
-# 🕑 アナログ時計 OBS Analog Clock 【商用利用可・無料】
+# 🕑 OBS向けアナログ時計 / Analog Clock for OBS 【商用利用可・無料】
 
 またの名を「OBS上でアナログ時計を動かすことができるやつ」。
 
